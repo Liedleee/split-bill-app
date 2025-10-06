@@ -71,12 +71,3 @@ With a clean interface and data-driven insights, this project helps students sta
 | **Authentication** | Supabase Auth | Email/password with email verification |
 | **Deployment** | Vercel | CI/CD with auto-deploy from GitHub |
 
-
-## 🛠️ Running the Project Locally  
-
-Follow these steps to run **FINANCIA** on your local machine 👇  
-
-### 1️⃣ Clone the repository  
-```bash
-git clone https://github.com/Liedleee/split-bill-app.git
-cd financia-app
