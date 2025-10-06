@@ -13,7 +13,6 @@ const AuthComponent = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
-    // State baru untuk mengontrol visibilitas password
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -40,6 +39,15 @@ const AuthComponent = () => {
     return (
         <div className="flex justify-center items-center min-h-screen p-4 bg-gray-50 dark:bg-slate-900 transition-colors">
             <div className="bg-white dark:bg-slate-800 p-8 sm:p-12 rounded-2xl shadow-2xl w-full max-w-md text-center animate-fade-in">
+                
+                {/* 2. Bungkus <img> dengan <motion.div> dan tambahkan properti animasi */}
+              <img 
+                        src="/log.png" // Path diperbaiki
+                        alt="Financia Logo" 
+                        className="h-28 w-auto mx-auto" // Ukuran dan margin disesuaikan
+                    />
+            
+
                 <h1 className="font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-500 mb-2">
                     {isLogin ? 'Selamat Datang' : 'Buat Akun Baru'}
                 </h1>
@@ -55,17 +63,15 @@ const AuthComponent = () => {
                         required
                         className="w-full p-4 bg-gray-100 dark:bg-slate-700 border-2 border-transparent rounded-lg focus:ring-2 focus:ring-cyan-500 focus:outline-none dark:text-gray-200"
                     />
-                    {/* Input password sekarang dibungkus dalam div */}
                     <div className="relative">
                          <input
-                            type={showPassword ? "text" : "password"} // Tipe input berubah berdasarkan state
+                            type={showPassword ? "text" : "password"}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Password"
                             required
                             className="w-full p-4 pr-12 bg-gray-100 dark:bg-slate-700 border-2 border-transparent rounded-lg focus:ring-2 focus:ring-cyan-500 focus:outline-none dark:text-gray-200"
                         />
-                        {/* Tombol untuk toggle visibilitas password */}
                         <button 
                             type="button" 
                             onClick={() => setShowPassword(!showPassword)}
