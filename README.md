@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="[INSERT_YOUR_VERCEL_DEPLOYMENT_LINK_HERE]">
+  <a href="https://financia-delta.vercel.app/">
     <img src="https://img.shields.io/badge/Live_Demo-Financia-blue?style=for-the-badge&logo=vercel"/>
   </a>
   <a href="https://github.com/Liedleee/split-bill-app">
@@ -71,7 +71,6 @@ With a clean interface and data-driven insights, this project helps students sta
 | **Authentication** | Supabase Auth | Email/password with email verification |
 | **Deployment** | Vercel | CI/CD with auto-deploy from GitHub |
 
----
 
 ## 🛠️ Running the Project Locally  
 
