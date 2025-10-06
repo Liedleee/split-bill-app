@@ -44,7 +44,7 @@ const AuthComponent = () => {
                     {isLogin ? 'Selamat Datang' : 'Buat Akun Baru'}
                 </h1>
                 <p className="mb-8 text-gray-600 dark:text-gray-400">
-                    {isLogin ? 'Masuk untuk melanjutkan ke Finance Track' : 'Daftar untuk memulai perjalanan finansial Anda'}
+                    {isLogin ? 'Masuk untuk melanjutkan ke Financia' : 'Daftar untuk memulai perjalanan finansial Anda'}
                 </p>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
@@ -61,7 +61,7 @@ const AuthComponent = () => {
                             type={showPassword ? "text" : "password"} // Tipe input berubah berdasarkan state
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="parhan pikun ajg"
+                            placeholder="Password"
                             required
                             className="w-full p-4 pr-12 bg-gray-100 dark:bg-slate-700 border-2 border-transparent rounded-lg focus:ring-2 focus:ring-cyan-500 focus:outline-none dark:text-gray-200"
                         />
