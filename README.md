@@ -1,127 +1,83 @@
-FINANCIA - A Financial Tracker for University Students
+# 💸 FINANCIA — A Financial Tracker for University Students  
+
 <p align="center">
-<img src="public/log.png" alt="Financia Logo" width="150"/>
+  <img src="public/log.png" alt="Financia Logo" width="150"/>
 </p>
 
 <p align="center">
-A modern full-stack web application designed to help university students manage their personal finances with ease and efficiency. Track expenses, manage debts and IOUs, and split bills with friends—all in one intuitive, real-time platform.
+  <b>A modern full-stack web application designed to help university students manage their personal finances — track expenses, manage debts & IOUs, and split bills effortlessly — all in one intuitive platform.</b>
 </p>
 
 <p align="center">
-<a href="[INSERT_YOUR_VERCEL_DEPLOYMENT_LINK_HERE]"><strong>View Live Demo »</strong></a>
+  <a href="[INSERT_YOUR_VERCEL_DEPLOYMENT_LINK_HERE]">
+    <img src="https://img.shields.io/badge/Live_Demo-Financia-blue?style=for-the-badge&logo=vercel"/>
+  </a>
+  <a href="https://github.com/Liedleee/split-bill-app">
+    <img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github"/>
+  </a>
 </p>
 
-Background
-As a university student, managing a limited budget is often a challenge. Disorganized notes, forgetting to collect debts from friends, and the complicated process of splitting costs are common problems I faced myself. The FINANCIA project was born out of a personal need to create a tool that not only records transactions but also provides insights and makes it easy to take control of one's personal finances.
+---
 
-This application was built from scratch as a practical solution to these problems, featuring a clean, modern interface focused on the most relevant features for student life.
+## 🌱 Background  
 
-Key Features
-Secure User Authentication: A safe registration and login system using email/password, powered by Supabase Auth with email verification.
+Managing personal finances as a university student can be challenging. Between keeping track of spending, remembering who owes you money, and splitting bills with friends, it’s easy to lose track.  
 
-Interactive Expense Dashboard:
+**FINANCIA** was born from that exact problem — built as a practical and intuitive solution for students to take full control of their finances.  
+With a clean interface and data-driven insights, this project helps students stay organized and financially aware in their daily lives.  
 
-Quick Summary: Informative cards displaying today's and this month's total expenses.
+---
 
-Data Visualization: A line chart showing the spending trend over the last 7 days to help identify spending patterns.
+## 🚀 Key Features  
 
-Real-Time Logging: Add and delete expense records with instant UI updates without needing to refresh the page.
+### 🔐 Secure User Authentication  
+- Email/password registration and login powered by **Supabase Auth**  
+- Email verification support for added account security  
 
-Debt & IOU Management:
+### 📊 Interactive Expense Dashboard  
+- **Quick Summary:** Cards showing today’s and this month’s total expenses  
+- **Trend Visualization:** 7-day spending line chart using **Chart.js**  
+- **Real-Time Updates:** Instantly add or delete expenses — no refresh needed  
 
-Log debts (you owe someone) and IOUs (someone owes you) with contact details and descriptions.
+### 🤝 Debt & IOU Management  
+- Record debts (you owe someone) and IOUs (someone owes you)  
+- Update payment status in real-time  
+- Delete paid-off entries to keep records clean  
 
-Mark entries as "Paid" or "Unpaid" with real-time status updates.
+### 💰 Bill Splitting Calculator  
+- Calculate fair bill splits easily  
+- Include **tax (VAT)** options for real-world accuracy  
 
-Delete paid-off entries to keep the list clean.
+### 🌙 Responsive Design & Dark Mode  
+- Fully responsive layout (desktop & mobile)  
+- Auto-detect light/dark theme based on user preference  
 
-Bill Splitting Calculator: A practical utility to calculate how to split a bill fairly and quickly, complete with an option to include tax (VAT).
+### ✨ Smooth Animations  
+- Built with **Framer Motion** for beautiful, natural page transitions  
 
-Responsive Design & Dark Mode: A layout that adapts seamlessly across various devices (desktop and mobile) and supports the user's operating system preference for light or dark themes.
+---
 
-Smooth Animations: Page transitions and UI element animations built with Framer Motion to provide a more premium user experience.
+## 🧩 Tech Stack  
 
-Tech Stack
-This application is built using a modern tech stack focused on developer experience and performance.
+| Category | Technology | Description |
+|-----------|-------------|-------------|
+| **Frontend** | React.js (Vite) | Reactive UI built with reusable components |
+| **Styling** | Tailwind CSS | Utility-first CSS for modern, responsive design |
+| **Animation** | Framer Motion | Fluid transitions and motion effects |
+| **Charts** | Chart.js | Data visualization for expense tracking |
+| **Backend** | Supabase | BaaS providing API, Auth, and Realtime |
+| **Database** | PostgreSQL | Secure and scalable relational database |
+| **API & Realtime** | Supabase API | Real-time interaction with data |
+| **Authentication** | Supabase Auth | Email/password with email verification |
+| **Deployment** | Vercel | CI/CD with auto-deploy from GitHub |
 
-Category
+---
 
-Technology
+## 🛠️ Running the Project Locally  
 
-Description
+Follow these steps to run **FINANCIA** on your local machine 👇  
 
-Frontend
-
-React.js (Vite)
-
-The main UI library for building a reactive, component-based user interface.
-
-Styling
-
-Tailwind CSS
-
-A utility-first CSS framework for rapid, consistent, and responsive design.
-
-Animation
-
-Framer Motion
-
-An animation library for creating smooth transitions and dynamic interactions.
-
-Charts
-
-Chart.js
-
-A library for creating interactive and informative charts.
-
-Backend
-
-Supabase
-
-A Backend as a Service (BaaS) platform that provides all backend functionalities.
-
-Database
-
-PostgreSQL
-
-A powerful relational database for storing all application data.
-
-API & Realtime
-
-Supabase API
-
-An API to interact with the database and subscribe to data changes in real-time.
-
-Authentication
-
-Supabase Auth
-
-A service to manage user registration, login, and data security.
-
-Deployment
-
-Vercel
-
-A platform for automatically deploying the application from a GitHub repository (CI/CD).
-
-Running the Project Locally
-To run this project on your computer, follow these steps:
-
-Clone this repository:
-
-git clone [https://github.com/Liedleee/split-bill-app.git](https://github.com/Liedleee/split-bill-app.git)
+### 1️⃣ Clone the repository  
+```bash
+git clone https://github.com/Liedleee/split-bill-app.git
 cd financia-app
-
-Install all dependencies:
-
-npm install
-
-Set up the .env.local file:
-Create a file named .env.local in the project's root folder and fill it with your Supabase credentials:
-
-VITE_SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL"
-VITE_SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY"
-
-Run the development server:
-
-npm run dev
