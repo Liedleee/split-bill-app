@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
 
-// Icon SVG untuk email dan password
-const MailIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>;
-const LockIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>;
+// Ikon untuk tombol lihat/sembunyikan password
+const EyeIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>;
+const EyeOffIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>;
+
 
 const AuthComponent = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
+    // State baru untuk mengontrol visibilitas password
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError('');
         setMessage('');
-
         try {
             if (isLogin) {
                 const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -26,67 +28,67 @@ const AuthComponent = () => {
             } else {
                 const { error } = await supabase.auth.signUp({ email, password });
                 if (error) throw error;
-                setMessage('Pendaftaran berhasil! Silakan periksa email Anda untuk verifikasi.');
+                setMessage('Pendaftaran berhasil! Silakan cek email Anda untuk verifikasi.');
             }
         } catch (err) {
-            setError(err.message || "Terjadi kesalahan.");
+            setError(err.message);
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen p-4 bg-slate-100 dark:bg-slate-900 transition-colors duration-300">
-            <div className="bg-white dark:bg-slate-800 p-8 sm:p-10 rounded-2xl shadow-2xl w-full max-w-md">
-                <div className="text-center mb-8">
-                    <h1 className="font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-500 dark:from-cyan-400 dark:to-teal-400">
-                        FINANCIA
-                    </h1>
-                    <p className="text-gray-500 dark:text-gray-400 mt-2">
-                        {isLogin ? 'Masuk untuk melanjutkan' : 'Buat akun untuk memulai'}
-                    </p>
-                </div>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="flex justify-center items-center min-h-screen p-4 bg-gray-50 dark:bg-slate-900 transition-colors">
+            <div className="bg-white dark:bg-slate-800 p-8 sm:p-12 rounded-2xl shadow-2xl w-full max-w-md text-center animate-fade-in">
+                <h1 className="font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-500 mb-2">
+                    {isLogin ? 'Selamat Datang' : 'Buat Akun Baru'}
+                </h1>
+                <p className="mb-8 text-gray-600 dark:text-gray-400">
+                    {isLogin ? 'Masuk untuk melanjutkan ke Finance Track' : 'Daftar untuk memulai perjalanan finansial Anda'}
+                </p>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Alamat Email"
+                        required
+                        className="w-full p-4 bg-gray-100 dark:bg-slate-700 border-2 border-transparent rounded-lg focus:ring-2 focus:ring-cyan-500 focus:outline-none dark:text-gray-200"
+                    />
+                    {/* Input password sekarang dibungkus dalam div */}
                     <div className="relative">
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><MailIcon /></span>
-                        <input 
-                            type="email" 
-                            value={email} 
-                            onChange={(e) => setEmail(e.target.value)} 
-                            placeholder="Alamat Email" 
-                            required 
-                            className="w-full p-3 pl-10 bg-gray-50 dark:bg-slate-700 border-2 border-gray-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 focus:outline-none dark:text-white transition"
+                         <input
+                            type={showPassword ? "text" : "password"} // Tipe input berubah berdasarkan state
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="parhan pikun ajg"
+                            required
+                            className="w-full p-4 pr-12 bg-gray-100 dark:bg-slate-700 border-2 border-transparent rounded-lg focus:ring-2 focus:ring-cyan-500 focus:outline-none dark:text-gray-200"
                         />
-                    </div>
-                    <div className="relative">
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><LockIcon /></span>
-                        <input 
-                            type="password" 
-                            value={password} 
-                            onChange={(e) => setPassword(e.target.value)} 
-                            placeholder="Password" 
-                            required 
-                            className="w-full p-3 pl-10 bg-gray-50 dark:bg-slate-700 border-2 border-gray-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 focus:outline-none dark:text-white transition"
-                        />
+                        {/* Tombol untuk toggle visibilitas password */}
+                        <button 
+                            type="button" 
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-600 dark:text-gray-400"
+                        >
+                            {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                        </button>
                     </div>
 
-                    {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-                    {message && <p className="text-green-500 text-sm text-center">{message}</p>}
-
-                    <button 
-                        type="submit" 
+                    {error && <p className="text-red-500 text-sm">{error}</p>}
+                    {message && <p className="text-green-500 text-sm">{message}</p>}
+                    <button
+                        type="submit"
                         disabled={loading}
-                        className="w-full p-4 border-none rounded-lg bg-gradient-to-r from-cyan-600 to-teal-500 text-white font-bold text-lg cursor-pointer transition-all duration-300 hover:shadow-lg hover:from-cyan-700 hover:to-teal-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full p-4 border-none rounded-lg bg-cyan-600 text-white font-semibold text-lg cursor-pointer transition hover:bg-cyan-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
                     >
                         {loading ? 'Memproses...' : (isLogin ? 'Login' : 'Daftar')}
                     </button>
                 </form>
-
-                <p className="mt-8 text-sm text-center text-gray-500 dark:text-gray-400">
+                <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">
                     {isLogin ? "Belum punya akun?" : "Sudah punya akun?"}
-                    <button onClick={() => { setIsLogin(!isLogin); setError(''); setMessage(''); }} className="bg-transparent border-none text-cyan-600 dark:text-cyan-400 font-bold cursor-pointer ml-1 hover:underline">
-                        {isLogin ? 'Daftar di sini' : 'Login di sini'}
+                    <button onClick={() => { setIsLogin(!isLogin); setError(''); setMessage(''); }} className="bg-transparent border-none text-cyan-500 font-bold cursor-pointer ml-1 hover:underline">
+                        {isLogin ? 'Daftar' : 'Login'}
                     </button>
                 </p>
             </div>
