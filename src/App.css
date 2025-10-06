@@ -1,0 +1,13 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Menggunakan JetBrains Mono untuk class font-mono di Tailwind */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
